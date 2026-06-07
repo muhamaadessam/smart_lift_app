@@ -51,15 +51,15 @@ This application solves these challenges by providing a **wireless, intelligent,
 │   🏢 LIFT CONTROL       │  │   📱 SELECT DEVICE      │  │   ⚠️  SAFETY ALERTS     │
 │                         │  │                         │  │                         │
 │ ┌─────────────────────┐ │  │ ┌─────────────────────┐ │  │ ┌─────────────────────┐ │
-│ │ 🔵 Connected       │ │  │ │ Lift-Ctrl-01       │ │  │ │ Child Detected!    │ │
-│ │ Select Device      │ │  │ │ 00:1A:7D:DA:71:13 │ │  │ │ Overload Alert!    │ │
-│ │ Disconnect         │ │  │ │                    │ │  │ │                    │ │
+│ │ 🔵 Connected        │ │  │ │ Lift-Ctrl-01        │ │  │ │ Child Detected!     │ │
+│ │ Select Device       │ │  │ │ 00:1A:7D:DA:71:13   │ │  │ │ Overload Alert!     │ │
+│ │ Disconnect          │ │  │ │                     │ │  │ │                     │ │
 │ └─────────────────────┘ │  │ └─────────────────────┘ │  │ └─────────────────────┘ │
 │                         │  │                         │  │                         │
 │ ┌─────────────────────┐ │  │ ┌─────────────────────┐ │  │ ┌─────────────────────┐ │
-│ │ Enter floor: [ 3 ] │ │  │                       │ │  │ │ Connected: Floor 7 │ │
-│ │ [Move] [Open][Close]│  │  │ [Close]              │ │  │ │ Data: RDY,120%,OK   │ │
-│ └─────────────────────┘ │  │                       │  │ │ └─────────────────────┘ │
+│ │ Enter floor: [ 3 ]  │ │  │ │                     │ │  │ │ Connected: Floor 7  │ │
+│ │ [Move] [Open][Close]│ │  │ │ [Close]             │ │  │ │ Data: RDY,120%,OK   │ │
+│ └─────────────────────┘ │  │ └─────────────────────┘ │  │ └─────────────────────┘ │
 │                         │  │                         │  │                         │
 │ Connected to Lift-01    │  │                         │  │                         │
 └─────────────────────────┘  └─────────────────────────┘  └─────────────────────────┘
@@ -137,16 +137,16 @@ The application follows **Uncle Bob's Clean Architecture** principles combined w
 ```
 ┌──────────────────────────────────────────────────────────┐
 │                     UI LAYER (Presentation)              │
-│  HomeScreen → BlocConsumer → BlocBuilder patterns       │
+│   HomeScreen → BlocConsumer → BlocBuilder patterns       │
 ├──────────────────────────────────────────────────────────┤
 │              BUSINESS LOGIC LAYER (Application)          │
-│  BluetoothCubit → State Management → Event Handling     │
+│   BluetoothCubit → State Management → Event Handling     │
 ├──────────────────────────────────────────────────────────┤
 │              DATA LAYER (Repository/Service)             │
-│  BluetoothService → Native Plugin Abstraction           │
+│   BluetoothService → Native Plugin Abstraction           │
 ├──────────────────────────────────────────────────────────┤
 │            NATIVE & EXTERNAL SERVICES                    │
-│  flutter_bluetooth_classic_serial ↔ System Bluetooth    │
+│   flutter_bluetooth_classic_serial ↔ System Bluetooth    │
 └──────────────────────────────────────────────────────────┘
 ```
 
