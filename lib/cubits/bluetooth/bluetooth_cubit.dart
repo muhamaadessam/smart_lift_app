@@ -30,6 +30,7 @@ class BluetoothCubit extends Cubit<AppBluetoothState> {
             isConnected: false,
             connectionStatus: "Connect Bluetooth",
             errorMessage: "Device disconnected",
+            showConnectionAlert: true,
           ),
         );
         return;
@@ -67,7 +68,13 @@ class BluetoothCubit extends Cubit<AppBluetoothState> {
   }
 
   void clearAlert() {
-    emit(state.copyWith(showChildAlert: false, showOverloadAlert: false));
+    emit(
+      state.copyWith(
+        showChildAlert: false,
+        showOverloadAlert: false,
+        showConnectionAlert: false,
+      ),
+    );
   }
 
   // ── Public API ────────────────────────────────────────────────────────────
@@ -78,7 +85,12 @@ class BluetoothCubit extends Cubit<AppBluetoothState> {
       final devices = await _service.getPairedDevices();
       emit(state.copyWith(devices: devices));
     } catch (_) {
-      emit(state.copyWith(errorMessage: 'Error fetching devices'));
+      emit(
+        state.copyWith(
+          errorMessage: 'Error fetching devices',
+          showConnectionAlert: true,
+        ),
+      );
     }
   }
 
@@ -95,6 +107,7 @@ class BluetoothCubit extends Cubit<AppBluetoothState> {
           isConnected: false,
           connectionStatus: 'Connect Bluetooth',
           errorMessage: 'Connection failed',
+          showConnectionAlert: true,
         ),
       );
     } else {
@@ -118,7 +131,12 @@ class BluetoothCubit extends Cubit<AppBluetoothState> {
   Future<void> sendCommand(String cmd) async {
     debugPrint('Sending command: $cmd');
     if (!state.isConnected) {
-      emit(state.copyWith(errorMessage: 'Not connected to Bluetooth'));
+      emit(
+        state.copyWith(
+          errorMessage: 'Not connected to Bluetooth',
+          showConnectionAlert: true,
+        ),
+      );
       return;
     }
     await _service.sendText(cmd);

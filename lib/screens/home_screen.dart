@@ -172,7 +172,8 @@ class HomeScreen extends StatelessWidget {
         child: BlocConsumer<BluetoothCubit, AppBluetoothState>(
           listenWhen: (prev, curr) =>
               (curr.showChildAlert && !prev.showChildAlert) ||
-              (curr.showOverloadAlert && !prev.showOverloadAlert),
+              (curr.showOverloadAlert && !prev.showOverloadAlert) ||
+              (curr.showConnectionAlert && !prev.showConnectionAlert),
           listener: (context, state) {
             bool showAlert = false;
             String alertMessage = "";
@@ -182,6 +183,9 @@ class HomeScreen extends StatelessWidget {
             } else if (state.showOverloadAlert) {
               showAlert = true;
               alertMessage = "تم تجاوز الحمل!";
+            } else if (state.showConnectionAlert) {
+              showAlert = true;
+              alertMessage = state.errorMessage;
             }
 
             if (showAlert) {

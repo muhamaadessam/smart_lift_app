@@ -10,6 +10,7 @@ class AppBluetoothState {
   final String currentFloor;
   final bool showChildAlert;
   final bool showOverloadAlert;
+  final bool showConnectionAlert;
 
   const AppBluetoothState({
     this.isConnected = false,
@@ -21,6 +22,7 @@ class AppBluetoothState {
     this.currentFloor = '1',
     this.showChildAlert = false,
     this.showOverloadAlert = false,
+    this.showConnectionAlert = false,
   });
 
   AppBluetoothState copyWith({
@@ -33,6 +35,7 @@ class AppBluetoothState {
     String? currentFloor,
     bool? showChildAlert,
     bool? showOverloadAlert,
+    bool? showConnectionAlert,
   }) {
     return AppBluetoothState(
       isConnected: isConnected ?? this.isConnected,
@@ -44,6 +47,7 @@ class AppBluetoothState {
       currentFloor: currentFloor ?? this.currentFloor,
       showChildAlert: showChildAlert ?? this.showChildAlert,
       showOverloadAlert: showOverloadAlert ?? this.showOverloadAlert,
+      showConnectionAlert: showConnectionAlert ?? this.showConnectionAlert,
     );
   }
 }
